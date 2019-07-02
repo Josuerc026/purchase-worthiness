@@ -1,0 +1,19 @@
+//.title{
+//  font-size: 3rem;
+//}
+.dashboard{
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  .sidebar{
+    height: 100%;
+    width: 30%;
+    padding: 0 15px;
+    outline: 1px solid lightgray;
+  }
+  .main-content{
+    width: 70%;
+    padding: 0 15px;
+
+  }
+}

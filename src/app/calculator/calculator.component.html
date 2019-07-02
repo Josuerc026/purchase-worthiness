@@ -1,0 +1,21 @@
+<div class="inputs">
+  <label>
+    Monthly Income<br/>
+    <input placeholder="4000" [(ngModel)]="monthly">
+  </label>
+  <label>
+    Expenses<br/>
+    <input placeholder="500" [(ngModel)]="expenses">
+  </label>
+  <label>
+    Hours a week<br/>
+    <input placeholder="40" [(ngModel)]="hours">
+  </label>
+  <label>
+    Purchase Item<br/>
+    <input placeholder="150" [(ngModel)]="price">
+  </label>
+</div>
+<div class="calc-btn">
+  <button (click)="calculate()" [disabled]="!monthly || !expenses || !hours || !price">Calculate</button>
+</div>

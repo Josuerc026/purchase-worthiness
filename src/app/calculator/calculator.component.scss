@@ -1,0 +1,21 @@
+.inputs{
+  display: flex;
+  flex-direction: column;
+  label{
+    input{
+      padding: 5px;
+      margin: 5px 0;
+      border: 1px solid lightgray;
+      border-radius: 4px;
+    }
+  }
+}
+.calc-btn{
+  padding: 15px 0;
+  text-align: center;
+  button{
+    border: none;
+    background: aquamarine;
+    padding: 10px;
+  }
+}

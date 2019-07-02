@@ -1,0 +1,9 @@
+<div class="dashboard">
+  <div class="sidebar">
+    <h1 class="title">Is it worth it?</h1>
+    <app-calculator (timeSpent)="storeTimeSpent($event)" (weeklyHours)="storeWeeklyHours($event)"></app-calculator>
+  </div>
+  <div class="main-content">
+    <app-visualizer [timeSpent]="timeSpentCalculated" [hours]="weeklyHours"></app-visualizer>
+  </div>
+</div>

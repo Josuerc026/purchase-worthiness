@@ -1,0 +1,6 @@
+<h1>Snapshot</h1>
+<div class="hrs-view" *ngIf="timeSpent">{{timeSpent | number:'1.0-0'}} hours</div>
+<div class="weekly-hours">
+  <div class="time-spent" [style.width.%]="((timeSpent | number:'1.0-0')/weeklyHours) * 100"></div>
+  <span class="total-time">{{weeklyHours}}hrs/week</span>
+</div>

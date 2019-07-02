@@ -1,0 +1,22 @@
+.weekly-hours{
+  width: 100%;
+  background: #ececec;
+  height: 30px;
+  border-radius: 8px;
+
+  .time-spent{
+    width: 0.01%;
+    background: lightgreen;
+    height: inherit;
+    transition: 0.3s all;
+  }
+  .total-time{
+    display: block;
+    text-align: right;
+  }
+}
+
+.hrs-view{
+  display: inline-block;
+  font-size: 4rem;
+}

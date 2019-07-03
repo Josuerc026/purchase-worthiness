@@ -31,3 +31,22 @@
     }
   }
 }
+@media (max-width: 768px) {
+  .dashboard{
+    display: block;
+    width: 100%;
+    .dashboard-content{
+      width: auto;
+      display: block;
+      // flex-direction: column;
+      .sidebar{
+        width: 100%;
+        padding: 0;
+      }
+      .main-content{
+        width: 100%;    
+        padding: 0;
+      }
+    }
+  }
+}

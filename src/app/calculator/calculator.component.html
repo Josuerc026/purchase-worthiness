@@ -1,19 +1,19 @@
 <div class="inputs">
   <label>
     <span>Monthly Income</span>
-    <input placeholder="4000" [(ngModel)]="userDetails.monthly">
+    <input placeholder="4000" type="number" [(ngModel)]="userDetails.monthly">
   </label>
   <label>
     <span>Expenses</span>
-    <input placeholder="500" [(ngModel)]="userDetails.expenses">
+    <input placeholder="500" type="number" [(ngModel)]="userDetails.expenses">
   </label>
   <label>
       <span>Purchase Item</span>
-      <input placeholder="150" [(ngModel)]="userDetails.price">
+      <input placeholder="150" type="number" [(ngModel)]="userDetails.price">
   </label>
   <label class="hours">
     <span>Hours a week</span>
-    <input placeholder="40" [(ngModel)]="userDetails.hours">
+    <input placeholder="40" type="number" [(ngModel)]="userDetails.hours">
   </label>
 </div>
 <div class="calc-btn">

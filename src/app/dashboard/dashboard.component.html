@@ -1,9 +1,13 @@
 <div class="dashboard">
-  <div class="sidebar">
-    <h1 class="title">Is it worth it?</h1>
-    <app-calculator (timeSpent)="storeTimeSpent($event)" (weeklyHours)="storeWeeklyHours($event)"></app-calculator>
-  </div>
-  <div class="main-content">
-    <app-visualizer [timeSpent]="timeSpentCalculated" [hours]="weeklyHours"></app-visualizer>
+  <div class="dashboard-content">
+      <div class="sidebar">
+          <h1 class="title">Is it worth it?</h1>
+          <app-calculator (userInfo)="storeUserInfo($event)"></app-calculator>
+        </div>
+        <div class="main-content">
+          <app-visualizer [userInfo]="userInfo"></app-visualizer>
+          <br/>
+          <small>Savings is based off of 20% of your monthly income. </small>
+        </div>
   </div>
 </div>

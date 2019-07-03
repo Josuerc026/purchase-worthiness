@@ -1,6 +1,38 @@
-<h1>Snapshot</h1>
-<div class="hrs-view" *ngIf="timeSpent">{{timeSpent | number:'1.0-0'}} hours</div>
-<div class="weekly-hours">
-  <div class="time-spent" [style.width.%]="((timeSpent | number:'1.0-0')/weeklyHours) * 100"></div>
-  <span class="total-time">{{weeklyHours}}hrs/week</span>
+<div class="visualizer">
+    <div class="main">
+        <h2 class="main-title"><strong>${{userInfo.price ? userInfo.price : 0}} </strong>is equal to...</h2>
+    </div>
+    <div class="sub">
+        <span class="label">Hours worked</span>
+        <div class="progress-bar weekly-hours">
+          <div class="percentage time-spent" [style.width.%]="((userInfo.timeSpent | number:'1.0-0')/userInfo.hours) * 100"></div>
+          <span class="progress-label" *ngIf="userInfo.timeSpent && userInfo.timeSpent > 1">{{userInfo.timeSpent | number:'1.0-0'}} hours</span>
+          <span class="progress-label" *ngIf="userInfo.timeSpent && userInfo.timeSpent < 1">Less than one hour</span>
+          <span class="total-time total">{{userInfo.hours}} hrs/week</span>
+        </div>
+    </div>
+    <div class="sub">
+        <span class="label">% of Monthly Income</span>
+        <div class="progress-bar monthly-spent">
+          <div class="percentage" [style.width.%]="((userInfo.price / (userInfo.monthly - userInfo.expenses)) * 100)"></div>
+          <span class="progress-label" *ngIf="userInfo.monthly">{{((userInfo.price / (userInfo.monthly - userInfo.expenses)) * 100) | number: '1.0-0'}}%</span>
+          <span class="total">${{ userInfo.monthly - userInfo.expenses }}</span>
+        </div>
+    </div>
+    <div class="sub">
+        <span class="label">% of Expenses</span>
+        <div class="progress-bar expenses-comparison">
+          <div class="percentage" [style.width.%]="((userInfo.price / userInfo.expenses) * 100)"></div>
+          <span class="progress-label" *ngIf="userInfo.monthly">{{((userInfo.price / userInfo.expenses) * 100) | number: '1.0-0'}}%</span>
+          <span class="total">${{ userInfo.expenses ? userInfo.expenses : 0 }}</span>
+        </div>
+    </div>
+    <div class="sub">
+        <span class="label">% that could be saved</span>
+        <div class="progress-bar savings-comparison">
+          <div class="percentage" [style.width.%]="((userInfo.price / ((userInfo.monthly - userInfo.expenses) * 0.20)) * 100)"></div>
+          <span class="progress-label" *ngIf="userInfo.monthly">{{((userInfo.price / ((userInfo.monthly - userInfo.expenses) * 0.20)) * 100) | number: '1.0-0'}}%</span>
+          <span class="total">${{ (userInfo.monthly - userInfo.expenses) * 0.20 }}</span>
+        </div>
+    </div>
 </div>

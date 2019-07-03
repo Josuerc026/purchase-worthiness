@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import userInfo from '../user-info';
 
 @Component({
   selector: 'app-visualizer',
@@ -6,11 +7,28 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./visualizer.component.scss']
 })
 export class VisualizerComponent implements OnInit {
-  @Input('timeSpent') timeSpent: number = null;
-  @Input('hours') weeklyHours: number = null;
+  @Input() userInfo: userInfo = {
+    monthly: null,
+    expenses: null,
+    hours: null,
+    price: null,
+    timeSpent: null
+  }
   constructor() { }
 
+  ngOnChanges(changes){
+    console.log(changes);
+  }
   ngOnInit() {
+    if(this.userInfo == null){
+      this.userInfo = {
+        monthly: null,
+        expenses: null,
+        hours: null,
+        price: null,
+        timeSpent: null
+      }
+    }
   }
 
 }

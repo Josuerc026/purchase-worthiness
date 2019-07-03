@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import userInfo from '../user-info';
 
 @Component({
   selector: 'app-dashboard',
@@ -6,17 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  timeSpentCalculated: number = null;
-  weeklyHours: number = null;
+  userInfo: userInfo = null;
   constructor() { }
 
   ngOnInit() {
   }
-  storeTimeSpent(time: number): void {
-    this.timeSpentCalculated = time;
-  }
-  storeWeeklyHours(hours: number): void {
-    console.log(hours);
-    this.weeklyHours = hours;
+  storeUserInfo(user: userInfo): void{
+    this.userInfo = user;
   }
 }

@@ -1,21 +1,21 @@
 <div class="inputs">
   <label>
-    Monthly Income<br/>
-    <input placeholder="4000" [(ngModel)]="monthly">
+    <span>Monthly Income</span>
+    <input placeholder="4000" [(ngModel)]="userDetails.monthly">
   </label>
   <label>
-    Expenses<br/>
-    <input placeholder="500" [(ngModel)]="expenses">
+    <span>Expenses</span>
+    <input placeholder="500" [(ngModel)]="userDetails.expenses">
   </label>
   <label>
-    Hours a week<br/>
-    <input placeholder="40" [(ngModel)]="hours">
+      <span>Purchase Item</span>
+      <input placeholder="150" [(ngModel)]="userDetails.price">
   </label>
-  <label>
-    Purchase Item<br/>
-    <input placeholder="150" [(ngModel)]="price">
+  <label class="hours">
+    <span>Hours a week</span>
+    <input placeholder="40" [(ngModel)]="userDetails.hours">
   </label>
 </div>
 <div class="calc-btn">
-  <button (click)="calculate()" [disabled]="!monthly || !expenses || !hours || !price">Calculate</button>
+  <button (click)="calculate()" [disabled]="!userDetails.monthly || !userDetails.expenses || !userDetails.hours || !userDetails.price">Calculate</button>
 </div>

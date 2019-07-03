@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import userInfo from '../user-info';
 
 @Component({
   selector: 'app-calculator',
@@ -6,25 +7,26 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./calculator.component.scss']
 })
 export class CalculatorComponent implements OnInit {
+  
+  userDetails: userInfo = {
+    monthly: null,
+    expenses: null,
+    hours: null,
+    price: null,
+    timeSpent: null
+  }
 
-  monthly: number = null;
-  expenses: number = null;
-  hours: number = null;
-  price: number = null;
-  output: string = null;
-
-  @Output() timeSpent: EventEmitter<any> = new EventEmitter<any>();
-  @Output() weeklyHours: EventEmitter<any> = new EventEmitter<any>();
+  @Output() userInfo: EventEmitter<userInfo> = new EventEmitter<userInfo>();
 
   constructor() { }
 
   ngOnInit() {
   }
   calculate() {
-    const timeSpent = (this.price / (((this.monthly * 12) - this.expenses) / (this.hours * 52)));
-    this.output = Math.round(timeSpent) + '';
-    this.timeSpent.emit(timeSpent);
-    this.weeklyHours.emit(parseInt(this.hours));
+    const {monthly, expenses, hours, price} = this.userDetails;
+    const timeSpent = (price / (((monthly * 12) - expenses) / (hours * 52)));
+    this.userDetails.timeSpent = timeSpent;
+    this.userInfo.emit(Object.assign({}, this.userDetails));
   }
 
 }

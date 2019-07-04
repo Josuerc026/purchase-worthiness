@@ -12,13 +12,16 @@ export class VisualizerComponent implements OnInit {
     expenses: null,
     hours: null,
     price: null,
-    timeSpent: null
+    calcs: {
+      timeSpent: null,
+      percentageOfWeeklyTimeSpent: null,
+      percentageOfMonthly: null,
+      percentageOfExpenses: null,
+      percentageOfSaved: null
+    }
   }
   constructor() { }
 
-  ngOnChanges(changes){
-    console.log(changes);
-  }
   ngOnInit() {
     if(this.userInfo == null){
       this.userInfo = {
@@ -26,7 +29,13 @@ export class VisualizerComponent implements OnInit {
         expenses: null,
         hours: null,
         price: null,
-        timeSpent: null
+        calcs: {
+          timeSpent: null,
+          percentageOfWeeklyTimeSpent: null,
+          percentageOfMonthly: null,
+          percentageOfExpenses: null,
+          percentageOfSaved: null
+        }
       }
     }
   }

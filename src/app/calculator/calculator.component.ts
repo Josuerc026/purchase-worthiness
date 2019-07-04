@@ -7,13 +7,19 @@ import userInfo from '../user-info';
   styleUrls: ['./calculator.component.scss']
 })
 export class CalculatorComponent implements OnInit {
-  
+  test:number = 30;
   userDetails: userInfo = {
-    monthly: null,
-    expenses: null,
-    hours: null,
-    price: null,
-    timeSpent: null
+    monthly: 4000,
+    expenses: 500,
+    hours: 40,
+    price: 150,
+    calcs: {
+      timeSpent: null,
+      percentageOfWeeklyTimeSpent: null,
+      percentageOfMonthly: null,
+      percentageOfExpenses: null,
+      percentageOfSaved: null
+    }
   }
 
   @Output() userInfo: EventEmitter<userInfo> = new EventEmitter<userInfo>();
@@ -23,10 +29,34 @@ export class CalculatorComponent implements OnInit {
   ngOnInit() {
   }
   calculate() {
-    const {monthly, expenses, hours, price} = this.userDetails;
-    const timeSpent = (price / (((monthly * 12) - expenses) / (hours * 52)));
-    this.userDetails.timeSpent = timeSpent;
+    const {calcs} = this.userDetails;
+    calcs.timeSpent = this.timeSpent(this.userDetails);
+    calcs.percentageOfWeeklyTimeSpent = this.percentageOfWeeklyTimeSpent(this.userDetails);
+    calcs.percentageOfMonthly = this.percentageOfMonthly(this.userDetails);
+    calcs.percentageOfExpenses = this.percentageOfExpenses(this.userDetails);
+    calcs.percentageOfSaved = this.percentageOfSaved(this.userDetails);
+    console.log(this.userDetails);
     this.userInfo.emit(Object.assign({}, this.userDetails));
+  }
+
+  timeSpent({monthly, expenses, hours, price}){
+    return (price / (((monthly * 12) - expenses) / (hours * 52)));
+  }
+
+  percentageOfWeeklyTimeSpent({monthly, expenses, hours, price}){
+    return (Math.round(this.timeSpent({monthly, expenses, hours, price})) / hours) * 100;
+  }
+
+  percentageOfMonthly({monthly, expenses, hours, price}){
+    return (price / (monthly - expenses)) * 100;
+  }
+
+  percentageOfExpenses({monthly, expenses, hours, price}){
+    return (price / expenses) * 100;
+  }
+
+  percentageOfSaved({monthly, expenses, hours, price}){
+    return (price / ((monthly - expenses) * 0.2)) * 100;
   }
 
 }

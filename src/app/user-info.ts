@@ -3,5 +3,11 @@ export default interface userInfo {
     expenses: number,
     hours: number,
     price: number,
-    timeSpent: number
+    calcs: {
+        timeSpent: number,
+        percentageOfWeeklyTimeSpent: number,
+        percentageOfMonthly: number,
+        percentageOfExpenses: number,
+        percentageOfSaved: number
+    }
 }
